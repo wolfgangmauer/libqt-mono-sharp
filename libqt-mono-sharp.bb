@@ -67,6 +67,7 @@ do_install() {
 	install -d ${D}${libdir}
 	install -m 755 libqt_mono-sharp.so.0.0.0 ${D}${libdir}/
 	ln -s libqt_mono-sharp.so.0.0.0 ${D}${libdir}/libqt_mono-sharp.so.0
+	ln -s libqt_mono-sharp.so.0 ${D}${libdir}/libqt_mono-sharp.so
 }
 
 FILES:${PN} = "${libdir}"
