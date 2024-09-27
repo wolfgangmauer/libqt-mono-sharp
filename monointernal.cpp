@@ -26,7 +26,7 @@
 #include "QGlueToolButton.h"
 #include "QGlueCommandLinkButton.h"
 #include "QGlueComboBox.h"
-
+#include "QGlueUiLoader.h"
 #include <QPainter>
 #include <QHeaderView>
 #include <QDesktopWidget>
@@ -164,18 +164,18 @@ void qt_objectname_set(GlueObject* obj, MonoString* name)
 	g_free(p);
 }
 
-//GlueUiLoader* qt_uiloader_new(MonoObject* obj, GlueObject* parent)
-//{
-//	return new GlueUiLoader(obj, parent);
-//}
-//
-//QWidget* qt_uiloader_load(GlueUiLoader* loader, MonoString* uiFile, QWidget* parentWidget)
-//{
-//	char* p = mono_string_to_utf8(uiFile);
-//	QFile file(p);
-//	g_free(p);
-//	return loader->loadFile(&file, parentWidget);
-//}
+GlueUiLoader* qt_uiloader_new(MonoObject* obj, GlueObject* parent)
+{
+	return new GlueUiLoader(obj, parent);
+}
+
+QWidget* qt_uiloader_load(GlueUiLoader* loader, MonoString* uiFile, QWidget* parentWidget)
+{
+	char* p = mono_string_to_utf8(uiFile);
+	QFile file(p);
+	g_free(p);
+	return loader->loadFile(&file, parentWidget);
+}
 
 QObject* qt_object_find(QWidget* startFrom, MonoString* name)
 {
@@ -2174,8 +2174,8 @@ extern "C" void qt_application_monointernal_init()
 
 	mono_add_internal_call ("Qt.EglFSFunctions::qt_eglfs_loadkeymap", reinterpret_cast<void*>(qt_eglfs_loadkeymap));
 
-	//mono_add_internal_call ("Qt.UiLoader::qt_uiloader_new", reinterpret_cast<void*>(qt_uiloader_new));
-	//mono_add_internal_call ("Qt.UiLoader::qt_uiloader_load", reinterpret_cast<void*>(qt_uiloader_load));
+	mono_add_internal_call ("Qt.UiLoader::qt_uiloader_new", reinterpret_cast<void*>(qt_uiloader_new));
+	mono_add_internal_call ("Qt.UiLoader::qt_uiloader_load", reinterpret_cast<void*>(qt_uiloader_load));
 
 	mono_add_internal_call ("Qt.MainWindow::qt_mainwindow_new", reinterpret_cast<void*>(qt_mainwindow_new));
 	mono_add_internal_call ("Qt.MainWindow::qt_mainwindow_menubar_get", reinterpret_cast<void*>(qt_mainwindow_menubar_get));

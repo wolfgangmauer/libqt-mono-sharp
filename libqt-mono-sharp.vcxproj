@@ -47,6 +47,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
@@ -74,12 +75,89 @@
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <TargetExt>.so</TargetExt>
+  </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClInclude Include="internalevents.h" />
+    <ClInclude Include="QGlueAction.h" />
+    <ClInclude Include="QGlueApplication.h" />
+    <ClInclude Include="QGlueBoxLayout.h" />
+    <ClInclude Include="QGlueCheckBox.h" />
+    <ClInclude Include="QGlueComboBox.h" />
+    <ClInclude Include="QGlueCommandLinkButton.h" />
+    <ClInclude Include="QGlueDialog.h" />
+    <ClInclude Include="QGlueFont.h" />
+    <ClInclude Include="QGlueFrame.h" />
+    <ClInclude Include="QGlueGridLayout.h" />
+    <ClInclude Include="QGlueHBoxLayout.h" />
+    <ClInclude Include="QGlueLabel.h" />
+    <ClInclude Include="QGlueLayout.h" />
+    <ClInclude Include="QGlueListView.h" />
+    <ClInclude Include="QGlueListWidget.h" />
+    <ClInclude Include="QGlueMainWindow.h" />
+    <ClInclude Include="QGlueMenu.h" />
+    <ClInclude Include="QGlueMenuBar.h" />
+    <ClInclude Include="QGlueModelIndex.h" />
+    <ClInclude Include="QGlueObject.h" />
+    <ClInclude Include="QGlueProgressBar.h" />
+    <ClInclude Include="QGluePushButton.h" />
+    <ClInclude Include="QGlueScrollArea.h" />
+    <ClInclude Include="QGlueSizePolicy.h" />
+    <ClInclude Include="QGlueStandardItemModel.h" />
+    <ClInclude Include="QGlueSvgWidget.h" />
+    <ClInclude Include="QGlueTableView.h" />
+    <ClInclude Include="QGlueTableWidget.h" />
+    <ClInclude Include="QGlueToolBar.h" />
+    <ClInclude Include="QGlueToolButton.h" />
+    <ClInclude Include="QGlueUiLoader.h" />
+    <ClInclude Include="QGlueVBoxLayout.h" />
+    <ClInclude Include="QGlueWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="monointernal.cpp" />
+    <ClCompile Include="QGlueAction.cpp" />
+    <ClCompile Include="QGlueApplication.cpp" />
+    <ClCompile Include="QGlueBoxLayout.cpp" />
+    <ClCompile Include="QGlueCheckBox.cpp" />
+    <ClCompile Include="QGlueComboBox.cpp" />
+    <ClCompile Include="QGlueCommandLinkButton.cpp" />
+    <ClCompile Include="QGlueDialog.cpp" />
+    <ClCompile Include="QGlueFont.cpp" />
+    <ClCompile Include="QGlueFrame.cpp" />
+    <ClCompile Include="QGlueGridLayout.cpp" />
+    <ClCompile Include="QGlueHBoxLayout.cpp" />
+    <ClCompile Include="QGlueLabel.cpp" />
+    <ClCompile Include="QGlueLayout.cpp" />
+    <ClCompile Include="QGlueListView.cpp" />
+    <ClCompile Include="QGlueListWidget.cpp" />
+    <ClCompile Include="QGlueMainWindow.cpp" />
+    <ClCompile Include="QGlueMenu.cpp" />
+    <ClCompile Include="QGlueMenuBar.cpp" />
+    <ClCompile Include="QGlueModelIndex.cpp" />
+    <ClCompile Include="QGlueObject.cpp" />
+    <ClCompile Include="QGlueProgressBar.cpp" />
+    <ClCompile Include="QGluePushButton.cpp" />
+    <ClCompile Include="QGlueScrollArea.cpp" />
+    <ClCompile Include="QGlueSizePolicy.cpp" />
+    <ClCompile Include="QGlueStandardItemModel.cpp" />
+    <ClCompile Include="QGlueSvgWidget.cpp" />
+    <ClCompile Include="QGlueTableView.cpp" />
+    <ClCompile Include="QGlueTableWidget.cpp" />
+    <ClCompile Include="QGlueToolBar.cpp" />
+    <ClCompile Include="QGlueToolButton.cpp" />
+    <ClCompile Include="QGlueUiLoader.cpp" />
+    <ClCompile Include="QGlueVBoxLayout.cpp" />
+    <ClCompile Include="QGlueWidget.cpp" />
   </ItemGroup>
-  <ItemDefinitionGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories);/usr/include/glib-2.0;/usr/lib/glib-2.0/include;/usr/include/mono-2.0;/usr/include/QtCore;/usr/include/QtGui;/usr/include/QtWidgets;/usr/include/QtSvg;/usr/include/QtUiTools;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>;mono-2.0;Qt5Core;Qt5Gui;Qt5Widgets;Qt5Svg;Qt5UiTools;stdc++;glib-2.0;</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>
