@@ -21,7 +21,6 @@ PKGV = "0.0.1+git${GITPKGV}"
 DEPENDS = "qtbase qttools qtsvg mono"
 
 SRC_URI = "git://github.com/wolfgangmauer/libqt-mono-sharp.git;protocol=http;branch=main"
-#SRC_URI = "git://github.com/wolfgangmauer/libqt-mono-sharp;protocol=git;branch=master"
 
 S = "${WORKDIR}/git"
 
