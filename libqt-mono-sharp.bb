@@ -1,4 +1,4 @@
-SUMMARY = "libray to show an mpeg2/4 iframe on a linuxtv video device"
+SUMMARY = "libray for mono and qt-mono-sharp"
 SECTION = "base"
 PRIORITY = "optional"
 LICENSE = "PD"
