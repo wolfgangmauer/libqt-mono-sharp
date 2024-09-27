@@ -1,4 +1,4 @@
-SUMMARY = "libray to show an mpeg2/4 iframe on a linuxtv video device"
+SUMMARY = "libray for mono and qt-mono-sharp"
 SECTION = "base"
 PRIORITY = "optional"
 LICENSE = "PD"
@@ -18,10 +18,9 @@ SRCREV = "${AUTOREV}"
 PV = "0.0.1+git"
 PKGV = "0.0.1+git${GITPKGV}"
 
-DEPENDS = "qtbase qtsvg mono"
+DEPENDS = "qtbase qttools qtsvg mono"
 
 SRC_URI = "git://github.com/wolfgangmauer/libqt-mono-sharp.git;protocol=http;branch=main"
-#SRC_URI = "git://github.com/wolfgangmauer/libqt-mono-sharp;protocol=git;branch=master"
 
 S = "${WORKDIR}/git"
 
@@ -57,15 +56,17 @@ do_compile() {
     ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueTableWidget.cpp
     ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueToolBar.cpp
     ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueToolButton.cpp
+    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5UiTools Qt5Svg mono-2 glib-2.0` QGlueUiLoader.cpp
     ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueVBoxLayout.cpp
     ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueWidget.cpp
-    ${CC} -shared -Wl,-soname,libqt_mono-sharp.so.0 -o libqt_mono-sharp.so.0.0.0 `pkg-config --libs Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` monointernal.o QGlueAction.o QGlueApplication.o QGlueBoxLayout.o QGlueHBoxLayout.o QGlueListView.o QGlueListWidget.o QGlueMainWindow.o QGlueMenu.o QGlueMenuBar.o QGlueModelIndex.o QGlueObject.o QGlueProgressBar.o QGluePushButton.o QGlueScrollArea.o QGlueSizePolicy.o QGlueStandardItemModel.o QGlueSvgWidget.o QGlueTableView.o QGlueTableWidget.o QGlueToolBar.o QGlueToolButton.o QGlueVBoxLayout.o QGlueWidget.o
+    ${CC} -shared -Wl,-soname,libqt_mono-sharp.so.0 -o libqt_mono-sharp.so.0.0.0 `pkg-config --libs Qt5Core Qt5Gui Qt5Widgets Qt5UiTools Qt5Svg mono-2 glib-2.0` monointernal.o QGlueAction.o QGlueApplication.o QGlueBoxLayout.o QGlueHBoxLayout.o QGlueListView.o QGlueListWidget.o QGlueMainWindow.o QGlueMenu.o QGlueMenuBar.o QGlueModelIndex.o QGlueObject.o QGlueProgressBar.o QGluePushButton.o QGlueScrollArea.o QGlueSizePolicy.o QGlueStandardItemModel.o QGlueSvgWidget.o QGlueTableView.o QGlueTableWidget.o QGlueToolBar.o QGlueToolButton.o QGlueVBoxLayout.o QGlueWidget.o
 }
 
 do_install() {
 	install -d ${D}${libdir}
 	install -m 755 libqt_mono-sharp.so.0.0.0 ${D}${libdir}/
 	ln -s libqt_mono-sharp.so.0.0.0 ${D}${libdir}/libqt_mono-sharp.so.0
+	ln -s libqt_mono-sharp.so.0 ${D}${libdir}/libqt_mono-sharp.so
 }
 
 FILES:${PN} = "${libdir}"
