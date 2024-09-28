@@ -25,14 +25,14 @@ SRC_URI = "git://github.com/wolfgangmauer/libqt-mono-sharp.git;protocol=http;bra
 S = "${WORKDIR}/git"
 
 do_compile() {
-    ${CC} -fPIC -shared -Wl,-soname,libqt_mono-sharp.so.0 -o libqt_mono-sharp.so.0.0.0 `pkg-config --cflags --libs Qt5Core Qt5Gui Qt5Widgets Qt5UiTools Qt5Svg mono-2 glib-2.0` monointernal.cpp QGlueAction.cpp QGlueApplication.cpp QGlueBoxLayout.cpp QGlueHBoxLayout.cpp QGlueListView.cpp QGlueListWidget.cpp QGlueMainWindow.cpp QGlueMenu.cpp QGlueMenuBar.cpp QGlueModelIndex.cpp QGlueObject.cpp QGlueProgressBar.cpp QGluePushButton.cpp QGlueScrollArea.cpp QGlueSizePolicy.cpp QGlueStandardItemModel.cpp QGlueSvgWidget.cpp QGlueTableView.cpp QGlueTableWidget.cpp QGlueToolBar.cpp QGlueToolButton.cpp QGlueVBoxLayout.cpp QGlueWidget.cpp
+    ${CC} -fPIC -shared -Wl,-soname,libqt-mono-sharp.so.0 -o libqt-mono-sharp.so.0.0.0 `pkg-config --cflags --libs Qt5Core Qt5Gui Qt5Widgets Qt5UiTools Qt5Svg mono-2 glib-2.0` monointernal.cpp QGlueAction.cpp QGlueApplication.cpp QGlueBoxLayout.cpp QGlueHBoxLayout.cpp QGlueListView.cpp QGlueListWidget.cpp QGlueMainWindow.cpp QGlueMenu.cpp QGlueMenuBar.cpp QGlueModelIndex.cpp QGlueObject.cpp QGlueProgressBar.cpp QGluePushButton.cpp QGlueScrollArea.cpp QGlueSizePolicy.cpp QGlueStandardItemModel.cpp QGlueSvgWidget.cpp QGlueTableView.cpp QGlueTableWidget.cpp QGlueToolBar.cpp QGlueToolButton.cpp QGlueVBoxLayout.cpp QGlueWidget.cpp
 }
 
 do_install() {
 	install -d ${D}${libdir}
-	install -m 755 libqt_mono-sharp.so.0.0.0 ${D}${libdir}/
-	ln -s libqt_mono-sharp.so.0.0.0 ${D}${libdir}/libqt_mono-sharp.so.0
-	ln -s libqt_mono-sharp.so.0 ${D}${libdir}/libqt_mono-sharp.so
+	install -m 755 libqt-mono-sharp.so.0.0.0 ${D}${libdir}/
+	ln -s libqt-mono-sharp.so.0.0.0 ${D}${libdir}/libqt-mono-sharp.so.0
+	ln -s libqt-mono-sharp.so.0 ${D}${libdir}/libqt-mono-sharp.so
 }
 
 FILES:${PN} = "${libdir}"
