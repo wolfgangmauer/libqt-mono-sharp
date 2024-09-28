@@ -25,41 +25,7 @@ SRC_URI = "git://github.com/wolfgangmauer/libqt-mono-sharp.git;protocol=http;bra
 S = "${WORKDIR}/git"
 
 do_compile() {
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` monointernal.cpp 
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueAction.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueApplication.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueBoxLayout.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueCheckBox.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueComboBox.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueCommandLinkButton.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueDialog.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueFont.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueFrame.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueGridLayout.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueHBoxLayout.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueLabel.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueLayout.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueListView.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueListWidget.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueMainWindow.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueMenu.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueMenuBar.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueModelIndex.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueObject.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueProgressBar.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGluePushButton.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueScrollArea.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueSizePolicy.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueStandardItemModel.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueSvgWidget.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueTableView.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueTableWidget.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueToolBar.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueToolButton.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5UiTools Qt5Svg mono-2 glib-2.0` QGlueUiLoader.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueVBoxLayout.cpp
-    ${CC} -fPIC -c `pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets Qt5Svg mono-2 glib-2.0` QGlueWidget.cpp
-    ${CC} -shared -Wl,-soname,libqt_mono-sharp.so.0 -o libqt_mono-sharp.so.0.0.0 `pkg-config --libs Qt5Core Qt5Gui Qt5Widgets Qt5UiTools Qt5Svg mono-2 glib-2.0` monointernal.o QGlueAction.o QGlueApplication.o QGlueBoxLayout.o QGlueHBoxLayout.o QGlueListView.o QGlueListWidget.o QGlueMainWindow.o QGlueMenu.o QGlueMenuBar.o QGlueModelIndex.o QGlueObject.o QGlueProgressBar.o QGluePushButton.o QGlueScrollArea.o QGlueSizePolicy.o QGlueStandardItemModel.o QGlueSvgWidget.o QGlueTableView.o QGlueTableWidget.o QGlueToolBar.o QGlueToolButton.o QGlueVBoxLayout.o QGlueWidget.o
+    ${CC} -fPIC -shared -Wl,-soname,libqt_mono-sharp.so.0 .cpp libqt_mono-sharp.so.0.0.0 `pkg-config --cflags --libs Qt5Core Qt5Gui Qt5Widgets Qt5UiTools Qt5Svg mono-2 glib-2.0` monointernal.cpp QGlueAction.cpp QGlueApplication.cpp QGlueBoxLayout.cpp QGlueHBoxLayout.cpp QGlueListView.cpp QGlueListWidget.cpp QGlueMainWindow.cpp QGlueMenu.cpp QGlueMenuBar.cpp QGlueModelIndex.cpp QGlueObject.cpp QGlueProgressBar.cpp QGluePushButton.cpp QGlueScrollArea.cpp QGlueSizePolicy.cpp QGlueStandardItemModel.cpp QGlueSvgWidget.cpp QGlueTableView.cpp QGlueTableWidget.cpp QGlueToolBar.cpp QGlueToolButton.cpp QGlueVBoxLayout.cpp QGlueWidget.cpp
 }
 
 do_install() {
