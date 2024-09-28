@@ -8,8 +8,8 @@ SRC_URI[sha256sum] = "c3573b6d25ea729252e825264fef45ee0375c540f0cd97075979367ed7
 
 PV = "1.0"
 
-PROVIDES =+ " libqt_mono-sharp"
-PACKAGES =+ " libqt_mono-sharp"
+PROVIDES =+ " libqt-mono-sharp"
+PACKAGES =+ " libqt-mono-sharp"
 
 inherit pkgconfig
 #inherit gitpkgv
