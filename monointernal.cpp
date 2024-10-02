@@ -1203,6 +1203,10 @@ QHeaderView* qt_widget_verticalheader_get(GlueTableView* tableView)
 	return tableView->verticalHeader();
 }
 
+QEvent* qt_event_new(QEvent::Type type)
+{
+	return new QEvent(type);
+}
 QEvent::Type qt_event_type_get(QEvent* event)
 {
 	return event->type();
@@ -2388,6 +2392,7 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.VBoxLayout::qt_vboxlayout_new", reinterpret_cast<void*>(qt_vboxlayout_new));
 	mono_add_internal_call ("Qt.HBoxLayout::qt_hboxlayout_new", reinterpret_cast<void*>(qt_hboxlayout_new));
 
+	mono_add_internal_call ("Qt.Event::qt_event_new", reinterpret_cast<void*>(qt_event_new));
 	mono_add_internal_call ("Qt.Event::qt_event_type_get", reinterpret_cast<void*>(qt_event_type_get));
 	mono_add_internal_call ("Qt.Event::qt_event_spontaneous_get", reinterpret_cast<void*>(qt_event_spontaneous_get));
 	mono_add_internal_call ("Qt.Event::qt_event_accepted_get", reinterpret_cast<void*>(qt_event_accepted_get));
