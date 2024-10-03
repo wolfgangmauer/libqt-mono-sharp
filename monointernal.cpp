@@ -174,10 +174,13 @@ MonoArray* qt_fontdatabase_get_fonts()
 	int i = 0;
 	for (const QString &family : fontFamilies)
 	{
-		printf("%s\n", family.toStdString().c_str());
-		auto _string = mono_string_new (mono_domain_get (), family.toStdString().c_str());
-		mono_array_set (retVal, gpointer, i, _string);
-		i++;
+		if (!famaly.isEmpty())
+		{
+			printf("%s\n", family.toStdString().c_str());
+			auto _string = mono_string_new (mono_domain_get (), family.toStdString().c_str());
+			mono_array_set (retVal, gpointer, i, _string);
+			i++;
+		}
 	}
 	return retVal;
 }
