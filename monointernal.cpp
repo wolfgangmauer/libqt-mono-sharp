@@ -165,11 +165,12 @@ void qt_objectname_set(GlueObject* obj, MonoString* name)
 	g_free(p);
 }
 
-void qt_fontdatabase_add(MonoString* font)
+int qt_fontdatabase_add(MonoString* font)
 {
 	char* p = mono_string_to_utf8(font);
-	QFontDatabase::addApplicationFont(p);
+	int rc = QFontDatabase::addApplicationFont(p);
 	g_free(p);
+	return rc;
 }
 
 GlueUiLoader* qt_uiloader_new(MonoObject* obj, GlueObject* parent)
