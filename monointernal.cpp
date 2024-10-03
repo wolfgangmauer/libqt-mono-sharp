@@ -165,6 +165,23 @@ void qt_objectname_set(GlueObject* obj, MonoString* name)
 	g_free(p);
 }
 
+MonoArray* qt_fontdatabase_get_fonts()
+{
+	QFontDatabase database;
+	const QStringList fontFamilies = database.families();
+	MonoArray* retVal = mono_array_new (mono_domain_get (), mono_get_string_class(), fontFamilies.size());
+
+	int i = 0;
+	for (const QString &family : fontFamilies)
+	{
+		printf("%s\n", family.toStdString().c_str());
+		auto _string = mono_string_new (mono_domain_get (), family.toStdString().c_str());
+		mono_array_set (retVal, gpointer, i, _string);
+		i++;
+	}
+	return retVal;
+}
+
 int qt_fontdatabase_add(MonoString* font)
 {
 	char* p = mono_string_to_utf8(font);
