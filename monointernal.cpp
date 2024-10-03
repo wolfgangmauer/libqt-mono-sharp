@@ -164,6 +164,13 @@ void qt_objectname_set(GlueObject* obj, MonoString* name)
 	g_free(p);
 }
 
+void qt_fontdatabase_add(MonoString* font)
+{
+	char* p = mono_string_to_utf8(font);
+	QFontDatabase::addApplicationFont(p)
+	g_free(p);
+}
+
 GlueUiLoader* qt_uiloader_new(MonoObject* obj, GlueObject* parent)
 {
 	return new GlueUiLoader(obj, parent);
@@ -2532,6 +2539,8 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.Object::qt_objectname_set", reinterpret_cast<void*>(qt_objectname_set));
 	mono_add_internal_call ("Qt.Object::qt_object_find", reinterpret_cast<void*>(qt_object_find));
 
+	mono_add_internal_call ("Qt.FontDatabase::qt_fontdatabase_add", reinterpret_cast<void*>(qt_fontdatabase_add));
+	
 	mono_add_internal_call ("Qt.Font::qt_font_new", reinterpret_cast<void*>(qt_font_new));
 	mono_add_internal_call ("Qt.Font::qt_font_new_with_params", reinterpret_cast<void*>(qt_font_new_with_params));
 	mono_add_internal_call ("Qt.Font::qt_font_family_get", reinterpret_cast<void*>(qt_font_family_get));
