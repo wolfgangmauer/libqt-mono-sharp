@@ -2559,6 +2559,7 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.Object::qt_object_find", reinterpret_cast<void*>(qt_object_find));
 
 	mono_add_internal_call ("Qt.FontDatabase::qt_fontdatabase_add", reinterpret_cast<void*>(qt_fontdatabase_add));
+	mono_add_internal_call ("Qt.FontDatabase::qt_fontdatabase_get_fonts", reinterpret_cast<void*>(qt_fontdatabase_get_fonts));
 	
 	mono_add_internal_call ("Qt.Font::qt_font_new", reinterpret_cast<void*>(qt_font_new));
 	mono_add_internal_call ("Qt.Font::qt_font_new_with_params", reinterpret_cast<void*>(qt_font_new_with_params));
