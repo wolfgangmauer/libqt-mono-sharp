@@ -168,7 +168,7 @@ void qt_objectname_set(GlueObject* obj, MonoString* name)
 void qt_fontdatabase_add(MonoString* font)
 {
 	char* p = mono_string_to_utf8(font);
-	QFontDatabase::addApplicationFont(p)
+	QFontDatabase::addApplicationFont(p);
 	g_free(p);
 }
 
