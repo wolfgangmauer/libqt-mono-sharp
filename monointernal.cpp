@@ -27,6 +27,7 @@
 #include "QGlueCommandLinkButton.h"
 #include "QGlueComboBox.h"
 #include "QGlueUiLoader.h"
+#include <QFontDatabase>
 #include <QPainter>
 #include <QHeaderView>
 #include <QDesktopWidget>
