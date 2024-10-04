@@ -10,10 +10,11 @@ public:
     GlueProgressBar(MonoObject* thisObject, QWidget* parent = 0);
     ~GlueProgressBar();
     void updateProgressValue(int value);
+    void setMaximumValue(int value);
 Q_OBJECT
 signals:
     void updateProgress(int value);
-
+    void setMaximum(int value);
 private:
    	void onpressed();
  	void onreleased();
