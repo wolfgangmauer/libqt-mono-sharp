@@ -677,7 +677,7 @@ int qt_progressbar_value_get(GlueProgressBar* widget)
 
 void qt_progressbar_value_set(GlueProgressBar* widget, int value)
 {
-	widget->setValue(value);
+	emit widget->updateValue(value);
 }
 
 MonoString* qt_progressbar_format_get(GlueProgressBar* widget)
