@@ -16,3 +16,5 @@ GlueProgressBar::~GlueProgressBar()
 	doOnRawDelete(_thisObject);
 	mono_gchandle_free (_thisObject); 
 }
+
+#include "moc_QGlueProgressBar.cpp"
