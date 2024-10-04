@@ -17,7 +17,7 @@ GlueLabel::GlueLabel(MonoObject* thisObject, char* text, QWidget *parent, Qt::Wi
 void GlueLabel::updateTextValue(char* text)
 {
 	QString str(text);
-	emit updateProgress(str);
+	emit updateText(str);
 }
 GlueLabel::~GlueLabel()
 {
