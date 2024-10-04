@@ -5,6 +5,7 @@ GlueLabel::GlueLabel(MonoObject* thisObject, QWidget *parent, Qt::WindowFlags f)
 {
 	_thisObject = mono_gchandle_new(thisObject, TRUE);
 	_nameSpace = mono_class_get_namespace(mono_object_get_class (mono_gchandle_get_target(_thisObject)));
+	connect(this, SIGNAL(updateText(const QString &)), this, SLOT(setText(const QString &)));
 }
 
 GlueLabel::GlueLabel(MonoObject* thisObject, char* text, QWidget *parent, Qt::WindowFlags f)
