@@ -13,6 +13,7 @@ signals:
     void updateValue(int value);
 
 private:
+    void updateProgressValue(int value);
    	void onpressed();
  	void onreleased();
  	void onclicked(bool checked);
