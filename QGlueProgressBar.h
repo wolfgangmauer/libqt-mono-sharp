@@ -9,11 +9,12 @@ class GlueProgressBar : public QProgressBar
 public:
     GlueProgressBar(MonoObject* thisObject, QWidget* parent = 0);
     ~GlueProgressBar();
+    void updateProgressValue(int value);
+
 signals:
     void updateValue(int value);
 
 private:
-    void updateProgressValue(int value);
    	void onpressed();
  	void onreleased();
  	void onclicked(bool checked);
