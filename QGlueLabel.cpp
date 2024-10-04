@@ -12,10 +12,16 @@ GlueLabel::GlueLabel(MonoObject* thisObject, char* text, QWidget *parent, Qt::Wi
 {
 	_thisObject = mono_gchandle_new(thisObject, TRUE);
 	_nameSpace = mono_class_get_namespace(mono_object_get_class (mono_gchandle_get_target(_thisObject)));
+	connect(this, SIGNAL(updateText(const QString &)), this, SLOT(setText(const QString &)));
 }
-
+void GlueLabel::updateTextValue(char* text)
+{
+	QString str(text);
+	emit updateProgress(str);
+}
 GlueLabel::~GlueLabel()
 {
 	doOnRawDelete(_thisObject);
 	mono_gchandle_free (_thisObject); 
 }
+#include "QGlueLabel.moc"
