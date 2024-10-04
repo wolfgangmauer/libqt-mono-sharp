@@ -13,7 +13,7 @@ public:
     void updateTextValue(char* text);
 Q_OBJECT
 signals:
-    void updateText(const QString&);
+    void updateText(const QString &);
 private:
     guint32 _thisObject;
 };
