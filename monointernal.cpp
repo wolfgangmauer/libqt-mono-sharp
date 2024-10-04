@@ -710,7 +710,7 @@ int qt_progressbar_maximum_get(GlueProgressBar* widget)
 
 void qt_progressbar_maximum_set(GlueProgressBar* widget, int value)
 {
-	widget->setMaximum(value);
+	widget->setMaximumValue(value);
 }
 
 void qt_progressbar_range_set(GlueProgressBar* widget, int min, int max)
