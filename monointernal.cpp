@@ -740,7 +740,7 @@ MonoString* qt_label_text_get(GlueLabel* label)
 void qt_label_text_set(GlueLabel* label, MonoString* text)
 {
 	char* p = mono_string_to_utf8(text);
-	label->setText(p);
+	label->updateTextValue(p);
 	g_free(p);
 }
 
