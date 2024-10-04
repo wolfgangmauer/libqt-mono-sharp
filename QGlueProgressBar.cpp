@@ -7,6 +7,10 @@ GlueProgressBar::GlueProgressBar(MonoObject* thisObject, QWidget* parent)
 	_nameSpace = mono_class_get_namespace(mono_object_get_class (mono_gchandle_get_target(_thisObject)));
 	connect(this, SIGNAL(updateValue(int)), this, SLOT(setValue(int)));
 }
+void GlueProgressBar::updateProgressValue(int value)
+{
+	emit updateValue(value);
+}
 
 GlueProgressBar::~GlueProgressBar()
 {
