@@ -16,7 +16,7 @@ GlueLabel::GlueLabel(MonoObject* thisObject, char* text, QWidget *parent, Qt::Wi
 }
 void GlueLabel::updateTextValue(char* text)
 {
-	QString str(text);
+	QString str = QString::fromUtf8(text);
 	emit updateText(str);
 }
 GlueLabel::~GlueLabel()
