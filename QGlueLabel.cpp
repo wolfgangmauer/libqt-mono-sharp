@@ -25,4 +25,4 @@ GlueLabel::~GlueLabel()
 	doOnRawDelete(_thisObject);
 	mono_gchandle_free (_thisObject); 
 }
-#include "QGlueLabel.moc"
+#include "QGlueLabel.h.moc"
