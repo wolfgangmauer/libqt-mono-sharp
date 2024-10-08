@@ -22,4 +22,4 @@ GlueProgressBar::~GlueProgressBar()
 	mono_gchandle_free (_thisObject); 
 }
 
-#include "QGlueProgressBar.moc"
+#include "QGlueProgressBar.h.moc"
