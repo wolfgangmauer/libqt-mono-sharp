@@ -308,7 +308,7 @@ void qt_widget_windowflags_set(QWidget* widget, Qt::WindowFlags type)
 
 void qt_widget_windowstate_set(QWidget* widget, Qt::WindowStates state)
 {
-	widget->setWindowState(type);
+	widget->setWindowState(state);
 }
 
 
