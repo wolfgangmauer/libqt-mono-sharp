@@ -306,6 +306,12 @@ void qt_widget_windowflags_set(QWidget* widget, Qt::WindowFlags type)
 	widget->setWindowFlags(type);
 }
 
+void qt_widget_windowstate_set(QWidget* widget, Qt::WindowStates state)
+{
+	widget->setWindowState(type);
+}
+
+
 void qt_widget_stylesheet_set(QWidget* widget, MonoString* stylesheet)
 {
 	char* p = mono_string_to_utf8(stylesheet);
@@ -2521,6 +2527,7 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.Widget::qt_widget_font_set", reinterpret_cast<void*>(qt_widget_font_set));
 	mono_add_internal_call ("Qt.Widget::qt_widget_windowflags_get", reinterpret_cast<void*>(qt_widget_windowflags_get));
 	mono_add_internal_call ("Qt.Widget::qt_widget_windowflags_set", reinterpret_cast<void*>(qt_widget_windowflags_set));
+	mono_add_internal_call ("Qt.Widget::qt_widget_windowstate_set", reinterpret_cast<void*>(qt_widget_windowstate_set));
 	mono_add_internal_call ("Qt.Widget::qt_widget_attribute_set", reinterpret_cast<void*>(qt_widget_attribute_set));
 	mono_add_internal_call ("Qt.Widget::qt_widget_sizepolicyhv_set", reinterpret_cast<void*>(qt_widget_sizepolicyhv_set));
 	mono_add_internal_call ("Qt.Widget::qt_widget_sizepolicy_get", reinterpret_cast<void*>(qt_widget_sizepolicy_get));
