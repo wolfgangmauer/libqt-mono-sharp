@@ -531,6 +531,14 @@ void qt_widget_geometry_set(QWidget* widget, QRect* rect)
 	widget->setGeometry(*rect);
 }
 
+bool qt_widget_updates_enabled_get(QWidget* widget)
+{
+	return widget->updatesEnabled();
+}
+void qt_widget_updates_enabled_set(QWidget* widget, bool enabled)
+{
+	widget->setUpdatesEnabled(enabled);
+}
 bool qt_widget_enabled_get(QWidget* widget)
 {
 	return widget->isEnabled();
@@ -2505,6 +2513,8 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.Widget::qt_widget_geometry_set", reinterpret_cast<void*>(qt_widget_geometry_set));
 	mono_add_internal_call ("Qt.Widget::qt_widget_enabled_get", reinterpret_cast<void*>(qt_widget_enabled_get));
 	mono_add_internal_call ("Qt.Widget::qt_widget_enabled_set", reinterpret_cast<void*>(qt_widget_enabled_set));
+	mono_add_internal_call ("Qt.Widget::qt_widget_updates_enabled_get", reinterpret_cast<void*>(qt_widget_updates_enabled_get));
+	mono_add_internal_call ("Qt.Widget::qt_widget_updates_enabled_set", reinterpret_cast<void*>(qt_widget_updates_enabled_set));
 
 	mono_add_internal_call ("Qt.Widget::qt_widget_stylesheet_set", reinterpret_cast<void*>(qt_widget_stylesheet_set));
 	mono_add_internal_call ("Qt.Widget::qt_widget_fixedsize_set", reinterpret_cast<void*>(qt_widget_fixedsize_set));
