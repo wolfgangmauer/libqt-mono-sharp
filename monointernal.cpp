@@ -1621,7 +1621,7 @@ void qt_standarditemmodel_data_row_col_set (GlueStandardItemModel* standardItemM
 }
 MonoString* qt_standarditemmodel_data_row_col_get (GlueStandardItemModel* standardItemModel, int row, int col)
 {
-	return mono_string_new(mono_domain_get (), standardItemModel->data(standardItemModel->index(row, col).toStdString().c_str());
+	return mono_string_new(mono_domain_get (), standardItemModel->data(standardItemModel->index(row, col)).toStdString().c_str());
 }
 void qt_standarditemmodel_item_append(GlueStandardItemModel* standardItemModel, QStandardItem* item)
 {
