@@ -1607,7 +1607,8 @@ void qt_standarditemmodel_item_row_col_set(GlueStandardItemModel* standardItemMo
 {
 	standardItemModel->setItem(row, col, item);
 }
-void qt_standarditemmodel_data_row_col_set (GlueStandardItemModel* standardItemModel, int row, int col, MonoString* item);
+
+void qt_standarditemmodel_data_row_col_set (GlueStandardItemModel* standardItemModel, int row, int col, MonoString* item)
 {
 	const char* p = mono_string_to_utf8(text);
 	standardItemModel->setData(standardItemModel->index(row, col), QVariant(p))
@@ -2598,6 +2599,9 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.StandardItemModel::qt_standarditemmodel_index_get", reinterpret_cast<void*>(qt_standarditemmodel_index_get));
 	mono_add_internal_call ("Qt.StandardItemModel::qt_standarditemmodel_item_row_set", reinterpret_cast<void*>(qt_standarditemmodel_item_row_set));
 	mono_add_internal_call ("Qt.StandardItemModel::qt_standarditemmodel_item_row_col_set", reinterpret_cast<void*>(qt_standarditemmodel_item_row_col_set));
+	
+	mono_add_internal_call ("Qt.StandardItemModel::qt_standarditemmodel_data_row_col_set", reinterpret_cast<void*>(qt_standarditemmodel_data_row_col_set));
+	
 	mono_add_internal_call ("Qt.StandardItemModel::qt_standarditemmodel_item_append", reinterpret_cast<void*>(qt_standarditemmodel_item_append));
 	mono_add_internal_call ("Qt.StandardItemModel::qt_standarditemmodel_rowcount_get", reinterpret_cast<void*>(qt_standarditemmodel_rowcount_get));
 	mono_add_internal_call ("Qt.StandardItemModel::qt_standarditemmodel_rowcount_set", reinterpret_cast<void*>(qt_standarditemmodel_rowcount_set));
