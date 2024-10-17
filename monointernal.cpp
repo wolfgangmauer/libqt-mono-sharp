@@ -1822,11 +1822,11 @@ void qt_tablewidgetitem_text_set(QTableWidgetItem* item, MonoString* text)
 	g_free(p);
 }
 
-GlueStandardItem* qt_standarditem_new(MonoString* text)
+GlueStandardItem* qt_standarditem_new(MonoObject* thisObject, MonoString* text)
 {
 	GlueStandardItem* retVal = NULL;
 	char* p = mono_string_to_utf8(text);
-	retVal = new GlueStandardItem(p);
+	retVal = new GlueStandardItem(thisObject, p);
 	g_free(p);
 	return retVal;
 }
