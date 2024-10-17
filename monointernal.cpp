@@ -1827,6 +1827,18 @@ QStandardItem* qt_standarditem_new(MonoString* text)
 	return retVal;
 }
 
+MonoString* qt_standarditem_text_get(QStandardItem* standardItem)
+{
+	return mono_string_new(mono_domain_get (), standardItem->text().toStdString().c_str());
+}
+
+void qt_standarditem_text_set(QStandardItem* standardItem, MonoString* text)
+{
+	char* p = mono_string_to_utf8(text);
+	standardItem->setText(p);
+	g_free(p);
+}
+
 void qt_headerview_visible_set(QHeaderView* headerView, bool visible)
 {
 	headerView->setVisible(visible);
@@ -2308,6 +2320,8 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.AbstractButton::qt_abstractbutton_iconsize_set", reinterpret_cast<void*>(qt_abstractbutton_iconsize_set));
 
 	mono_add_internal_call ("Qt.StandardItem::qt_standarditem_new", reinterpret_cast<void*>(qt_standarditem_new));
+	mono_add_internal_call ("Qt.StandardItem::qt_standarditem_text_get", reinterpret_cast<void*>(qt_standarditem_text_get));
+	mono_add_internal_call ("Qt.StandardItem::qt_standarditem_text_set", reinterpret_cast<void*>(qt_standarditem_text_set));
 
 	mono_add_internal_call ("Qt.Label::qt_label_new", reinterpret_cast<void*>(qt_label_new));
 	mono_add_internal_call ("Qt.Label::qt_label_new_with_text", reinterpret_cast<void*>(qt_label_new_with_text));
