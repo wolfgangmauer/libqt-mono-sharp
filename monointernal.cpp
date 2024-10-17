@@ -1610,8 +1610,8 @@ void qt_standarditemmodel_item_row_col_set(GlueStandardItemModel* standardItemMo
 
 void qt_standarditemmodel_data_row_col_set (GlueStandardItemModel* standardItemModel, int row, int col, MonoString* text)
 {
-	const char* p = mono_string_to_utf8(text);
-	standardItemModel->setData(standardItemModel->index(row, col), QVariant(p));
+	char* p = mono_string_to_utf8(text);
+	standardItemModel->setData(standardItemModel->index(row, col), QVariant((const char*)p));
 	g_free(p);
 }
 
