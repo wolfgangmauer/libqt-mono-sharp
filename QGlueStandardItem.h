@@ -6,7 +6,7 @@ class GlueStandardItem : public QStandardItem
 {
 public:
     GlueStandardItem(MonoObject* thisObject, GlueObject* parent=0);
-
+    ~GlueStandardItem();
 private:
     guint32 _thisObject;
 };
