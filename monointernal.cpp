@@ -1598,17 +1598,17 @@ QModelIndex* qt_standarditemmodel_index_get(QStandardItemModel* standardItemMode
 	return new QModelIndex(standardItemModel->index(row, col));
 }
 
-void qt_standarditemmodel_item_row_set(GlueStandardItemModel* standardItemModel, int row, QStandardItem* item)
+void qt_standarditemmodel_item_row_set(GlueStandardItemModel* standardItemModel, int row, GlueStandardItem* item)
 {
 	standardItemModel->setItem(row, item);
 }
 
-void qt_standarditemmodel_item_row_col_set(GlueStandardItemModel* standardItemModel, int row, int col, QStandardItem* item)
+void qt_standarditemmodel_item_row_col_set(GlueStandardItemModel* standardItemModel, int row, int col, GlueStandardItem* item)
 {
 	standardItemModel->setItem(row, col, item);
 }
 
-QStandardItem* qt_standarditemmodel_item_row_col_get(GlueStandardItemModel* standardItemModel, int row, int col)
+GlueStandardItem* qt_standarditemmodel_item_row_col_get(GlueStandardItemModel* standardItemModel, int row, int col)
 {
 	return standardItemModel->item(row, col);
 }
@@ -1623,7 +1623,7 @@ MonoString* qt_standarditemmodel_data_row_col_get (GlueStandardItemModel* standa
 {
 	return mono_string_new(mono_domain_get (), standardItemModel->data(standardItemModel->index(row, col)).toString().toStdString().c_str());
 }
-void qt_standarditemmodel_item_append(GlueStandardItemModel* standardItemModel, QStandardItem* item)
+void qt_standarditemmodel_item_append(GlueStandardItemModel* standardItemModel, GlueStandardItem* item)
 {
 	standardItemModel->appendRow(item);
 }
@@ -1821,21 +1821,21 @@ void qt_tablewidgetitem_text_set(QTableWidgetItem* item, MonoString* text)
 	g_free(p);
 }
 
-QStandardItem* qt_standarditem_new(MonoString* text)
+GlueStandardItem* qt_standarditem_new(MonoString* text)
 {
-	QStandardItem* retVal = NULL;
+	GlueStandardItem* retVal = NULL;
 	char* p = mono_string_to_utf8(text);
-	retVal = new QStandardItem(p);
+	retVal = new GlueStandardItem(p);
 	g_free(p);
 	return retVal;
 }
 
-MonoString* qt_standarditem_text_get(QStandardItem* standardItem)
+MonoString* qt_standarditem_text_get(GlueStandardItem* standardItem)
 {
 	return mono_string_new(mono_domain_get (), standardItem->text().toStdString().c_str());
 }
 
-void qt_standarditem_text_set(QStandardItem* standardItem, MonoString* text)
+void qt_standarditem_text_set(GlueStandardItem* standardItem, MonoString* text)
 {
 	char* p = mono_string_to_utf8(text);
 	standardItem->setText(p);
