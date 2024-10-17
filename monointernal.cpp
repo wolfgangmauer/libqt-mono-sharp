@@ -1603,7 +1603,7 @@ void qt_standarditemmodel_item_row_set(GlueStandardItemModel* standardItemModel,
 	standardItemModel->setItem(row, item);
 }
 
-QStandardItem* qt_standarditemmodel_item_row_col_set(GlueStandardItemModel* standardItemModel, int row, int col)
+QStandardItem* qt_standarditemmodel_item_row_col_get(GlueStandardItemModel* standardItemModel, int row, int col)
 {
 	return standardItemModel->item(row, col);
 }
