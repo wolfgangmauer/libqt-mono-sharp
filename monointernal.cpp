@@ -10,6 +10,7 @@
 #include "QGlueVBoxLayout.h"
 #include "QGlueLayout.h"
 #include "QGlueProgressBar.h"
+#include "QGlueStandardItem.h"
 #include "QGlueStandardItemModel.h"
 #include "QGlueModelIndex.h"
 #include "QGlueTableView.h"
