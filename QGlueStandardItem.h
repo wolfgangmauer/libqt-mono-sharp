@@ -5,7 +5,7 @@
 class GlueStandardItem : public QStandardItem
 {
 public:
-    GlueStandardItem(MonoObject* thisObject, GlueObject* parent=0);
+    GlueStandardItem(MonoObject* thisObject, char* text);
     ~GlueStandardItem();
 private:
     guint32 _thisObject;
