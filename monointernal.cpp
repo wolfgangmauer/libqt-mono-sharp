@@ -1822,21 +1822,21 @@ void qt_tablewidgetitem_text_set(QTableWidgetItem* item, MonoString* text)
 	g_free(p);
 }
 
-GlueStandardItem* qt_standarditem_new(MonoObject* thisObject, MonoString* text)
+QStandardItem* qt_standarditem_new(MonoObject* thisObject, MonoString* text)
 {
-	GlueStandardItem* retVal = NULL;
+	QStandardItem* retVal = NULL;
 	char* p = mono_string_to_utf8(text);
-	retVal = new GlueStandardItem(thisObject, p);
+	retVal = new QStandardItem(p);
 	g_free(p);
 	return retVal;
 }
 
-MonoString* qt_standarditem_text_get(GlueStandardItem* standardItem)
+MonoString* qt_standarditem_text_get(QStandardItem* standardItem)
 {
 	return mono_string_new(mono_domain_get (), standardItem->text().toStdString().c_str());
 }
 
-void qt_standarditem_text_set(GlueStandardItem* standardItem, MonoString* text)
+void qt_standarditem_text_set(QStandardItem* standardItem, MonoString* text)
 {
 	char* p = mono_string_to_utf8(text);
 	standardItem->setText(p);
