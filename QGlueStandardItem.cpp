@@ -1,7 +1,7 @@
 ﻿#include "QGlueStandardItem.h"
 
-GlueStandardItem::GlueStandardItem(MonoObject* thisObject, GlueObject* parent)
-	: QStandardItem(parent)
+GlueStandardItem::GlueStandardItem(MonoObject* thisObject, char* text)
+	: QStandardItem(text)
 {
 	_thisObject = mono_gchandle_new(thisObject, TRUE);
 }
