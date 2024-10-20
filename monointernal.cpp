@@ -1649,6 +1649,11 @@ void qt_standarditemmodel_colcount_set(GlueStandardItemModel* standardItemModel,
 	standardItemModel->setColumnCount(cols);
 }
 
+void qt_standarditemmodel_clear(GlueStandardItemModel* standardItemModel)
+{
+	standardItemModel->clear();
+}
+
 GlueStandardItemModel* qt_itemview_model_get(QAbstractItemView* abstractItemView)
 {
 	return (GlueStandardItemModel*)abstractItemView->model();
@@ -2632,7 +2637,10 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.StandardItemModel::qt_standarditemmodel_rowcount_set", reinterpret_cast<void*>(qt_standarditemmodel_rowcount_set));
 	mono_add_internal_call ("Qt.StandardItemModel::qt_standarditemmodel_colcount_get", reinterpret_cast<void*>(qt_standarditemmodel_colcount_get));
 	mono_add_internal_call ("Qt.StandardItemModel::qt_standarditemmodel_colcount_set", reinterpret_cast<void*>(qt_standarditemmodel_colcount_set));
+	mono_add_internal_call ("Qt.StandardItemModel::qt_standarditemmodel_clear", reinterpret_cast<void*>(qt_standarditemmodel_clear));
 
+	
+	
 	mono_add_internal_call ("Qt.HeaderView::qt_headerview_visible_set", reinterpret_cast<void*>(qt_headerview_visible_set));
 	mono_add_internal_call ("Qt.HeaderView::qt_headerview_section_resizemode_get", reinterpret_cast<void*>(qt_headerview_section_resizemode_get));
 	mono_add_internal_call ("Qt.HeaderView::qt_headerview_section_resizemode_set", reinterpret_cast<void*>(qt_headerview_section_resizemode_set));
