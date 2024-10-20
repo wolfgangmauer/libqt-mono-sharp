@@ -14,7 +14,17 @@ GlueTableView::~GlueTableView()
 	doOnRawDelete(_thisObject);
 	mono_gchandle_free (_thisObject); 
 }
-
+void GlueTableView::onitemSelectionChanged()
+{
+	auto klass = mono_object_get_class (mono_gchandle_get_target(_thisObject));
+	auto eventMethod = mono_class_get_method_from_name_recursive(klass, "OnItemSelectionChanged", 1);
+	if (eventMethod)
+	{
+		MonoImage* image = mono_class_get_image(mono_method_get_class(eventMethod));
+		mono_thread_attach (mono_get_root_domain ());
+		mono_runtime_invoke(eventMethod, mono_gchandle_get_target(_thisObject), NULL, NULL);
+	}
+}
 void GlueTableView::onpressed(const QModelIndex& index)
 {
 	auto klass = mono_object_get_class (mono_gchandle_get_target(_thisObject));
