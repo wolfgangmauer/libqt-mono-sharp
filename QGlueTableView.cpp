@@ -35,9 +35,9 @@ void GlueTableView::currentChanged(const QModelIndex &current, const QModelIndex
 			mono_thread_attach (mono_get_root_domain ());
 			mono_runtime_invoke (ctor, result2, args, NULL);
 
-			void *args [2];
-			args[0] = result1;
-			args[1] = result2;
+			void *_args [2];
+			_args[0] = result1;
+			_args[1] = result2;
 			mono_thread_attach (mono_get_root_domain ());
 			mono_runtime_invoke(eventMethod, mono_gchandle_get_target(_thisObject), args, NULL);
 		}
