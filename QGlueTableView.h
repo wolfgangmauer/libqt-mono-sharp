@@ -11,7 +11,7 @@ public:
     ~GlueTableView();
 private:
 	void onpressed(const QModelIndex &index);
-
+	void onitemSelectionChanged();
 private:
     guint32 _thisObject;
 };
