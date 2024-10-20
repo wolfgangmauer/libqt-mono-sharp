@@ -4,6 +4,7 @@ GlueStandardItemModel::GlueStandardItemModel(MonoObject* thisObject, GlueObject*
 	: QStandardItemModel(parent)
 {
 	_thisObject = mono_gchandle_new(thisObject, TRUE);
+	connect(this, SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)), this ,SLOT(onSelectioChanged()));
 }
 
 GlueStandardItemModel::GlueStandardItemModel(MonoObject* thisObject, int rows, int cols, GlueObject* parent)
