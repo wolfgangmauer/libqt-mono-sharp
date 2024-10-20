@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <QTableView>
+#include <QTableWidget>
 #include "QGlueWidget.h"
 
 class GlueTableView : public QTableView
