@@ -20,27 +20,13 @@ void GlueTableView::currentChanged(const QModelIndex &current, const QModelIndex
 	if (eventMethod)
 	{
 		MonoImage* image = mono_class_get_image(mono_method_get_class(eventMethod));
-		MonoClass* eventArgs = mono_class_from_name (image, "Qt", "ModelIndex");
-		if (eventArgs)
-		{
-			void *args [2];
-			args[0] = (void*)&current;
-			auto result1 = mono_object_new (mono_object_get_domain(mono_gchandle_get_target(_thisObject)), eventArgs);
-			MonoMethod* ctor1 = mono_class_get_method_from_name (eventArgs, ".ctor", 1);
-			mono_thread_attach (mono_get_root_domain ());
-			mono_runtime_invoke (ctor1, result1, args, NULL);
-			
-			args[0] = (void*)&previous;
-			auto result2 = mono_object_new (mono_object_get_domain(mono_gchandle_get_target(_thisObject)), eventArgs);
-			MonoMethod* ctor2 = mono_class_get_method_from_name (eventArgs, ".ctor", 1);
-			mono_thread_attach (mono_get_root_domain ());
-			mono_runtime_invoke (ctor2, result2, args, NULL);
-
-			args[0] = result1;
-			args[1] = result2;
-			mono_thread_attach (mono_get_root_domain ());
-			mono_runtime_invoke(eventMethod, mono_gchandle_get_target(_thisObject), args, NULL);
-		}
+		int currentRow = current.row();
+		int previousRow = previous.row();
+		void *args [2];
+		args[0] = (void*)&currentRow;
+		args[1] = (void*)&previousRow;
+		mono_thread_attach (mono_get_root_domain ());
+		mono_runtime_invoke(eventMethod, mono_gchandle_get_target(_thisObject), args, NULL);
 	}
 }
 void GlueTableView::onpressed(const QModelIndex& index)
