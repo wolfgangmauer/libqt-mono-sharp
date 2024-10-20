@@ -6,6 +6,7 @@ GlueTableView::GlueTableView(MonoObject* thisObject, QWidget *parent) : QTableVi
 	_nameSpace = mono_class_get_namespace(mono_object_get_class (mono_gchandle_get_target(_thisObject)));
 
 	connect(this, &QTableView::pressed, this, &GlueTableView::onpressed);
+	connect(this, &QTableWidget::itemSelectionChanged, this, &GlueTableView::onitemSelectionChanged);
 }
 
 GlueTableView::~GlueTableView()
