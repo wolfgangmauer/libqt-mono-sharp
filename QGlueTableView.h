@@ -10,9 +10,10 @@ class GlueTableView : public QTableView
 public:
     explicit GlueTableView(MonoObject* thisObject, QWidget *parent=0);
     ~GlueTableView();
+protected:
+	void currentChanged(const QModelIndex &current, const QModelIndex &previous) override;
 private:
 	void onpressed(const QModelIndex &index);
-	void onitemSelectionChanged();
 private:
     guint32 _thisObject;
 };
