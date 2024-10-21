@@ -1795,7 +1795,10 @@ void qt_tableview_scrollto(GlueTableView* tableView, int row, int col, QAbstract
 {
 	tableView->scrollTo(tableView->model()->index(row, col), hint);
 }
-
+void qt_tableview_scrollto_index(GlueTableView* tableView, GlueModelIndex* index, QAbstractItemView::ScrollHint hint)
+{
+	tableView->scrollTo(index, hint);
+}
 int qt_tableview_rowheight_get(GlueTableView* tableView, int row)
 {
 	return tableView->rowHeight(row);
@@ -2286,6 +2289,7 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.TableView::qt_tableview_colwidth_set", reinterpret_cast<void*>(qt_tableview_colwidth_set));
 	mono_add_internal_call ("Qt.TableView::qt_tableview_grid_show", reinterpret_cast<void*>(qt_tableview_grid_show));
 	mono_add_internal_call ("Qt.TableView::qt_tableview_scrollto", reinterpret_cast<void*>(qt_tableview_scrollto));
+	mono_add_internal_call ("Qt.TableView::qt_tableview_scrollto_index", reinterpret_cast<void*>(qt_tableview_scrollto_index));
 	mono_add_internal_call ("Qt.TableView::qt_tableview_rowheight_get", reinterpret_cast<void*>(qt_tableview_rowheight_get));
 	mono_add_internal_call ("Qt.TableView::qt_tableview_rowheight_set", reinterpret_cast<void*>(qt_tableview_rowheight_set));
 
