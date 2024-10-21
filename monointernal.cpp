@@ -1797,7 +1797,7 @@ void qt_tableview_scrollto(GlueTableView* tableView, int row, int col, QAbstract
 }
 void qt_tableview_scrollto_index(GlueTableView* tableView, GlueModelIndex* index, QAbstractItemView::ScrollHint hint)
 {
-	tableView->scrollTo(index, hint);
+	tableView->scrollTo(*index, hint);
 }
 int qt_tableview_rowheight_get(GlueTableView* tableView, int row)
 {
