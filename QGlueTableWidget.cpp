@@ -22,7 +22,7 @@ void GlueTableWidget::selectionChanged()
 		int row = currentRow();
 		MonoImage* image = mono_class_get_image(mono_method_get_class(eventMethod));
 		void *args [1];
-		args[0] = &row;
+		args[0] = (void*)&row;
 		mono_thread_attach (mono_get_root_domain ());
 		mono_runtime_invoke(eventMethod, mono_gchandle_get_target(_thisObject), args, NULL);
 	}
