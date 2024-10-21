@@ -9,6 +9,8 @@ class GlueTableWidget : public QTableWidget
 public:
     GlueTableWidget(MonoObject* thisObject, QWidget *parent=0);
     ~GlueTableWidget();
+public slots:
+    void selectionChanged();
 private:
     guint32 _thisObject;
 };
