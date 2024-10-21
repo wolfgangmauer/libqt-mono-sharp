@@ -1936,6 +1936,16 @@ QRect* qt_tablewidget_visual_item_rect(GlueTableWidget* tableWidget, QTableWidge
 	return new QRect(tableWidget->visualItemRect(item));
 }
 
+void qt_tablewidget_clear_contents(GlueTableWidget* tableWidget)
+{
+	tableWidget->clearContents();
+}
+
+void qt_tablewidget_clear(GlueTableWidget* tableWidget)
+{
+	tableWidget->clear();
+}
+
 GlueListWidget* qt_listwidget_new(MonoObject* thisObject, QWidget* parent)
 {
 	return new GlueListWidget(thisObject, parent);
@@ -2302,6 +2312,8 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_row_col_set", reinterpret_cast<void*>(qt_tablewidget_row_col_set));
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_item_select", reinterpret_cast<void*>(qt_tablewidget_item_select));
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_visual_item_rect", reinterpret_cast<void*>(qt_tablewidget_visual_item_rect));
+	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_clear", reinterpret_cast<void*>(qt_tablewidget_clear));
+	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_clear_contents", reinterpret_cast<void*>(qt_tablewidget_clear_contents));
 
 	mono_add_internal_call ("Qt.ListWidget::qt_listwidget_new", reinterpret_cast<void*>(qt_listwidget_new));
 	mono_add_internal_call ("Qt.ListWidget::qt_listwidget_item_add", reinterpret_cast<void*>(qt_listwidget_item_add));
@@ -2315,6 +2327,7 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.TableWidgetItem::qt_tablewidgetitem_new", reinterpret_cast<void*>(qt_tablewidgetitem_new));
 	mono_add_internal_call ("Qt.TableWidgetItem::qt_tablewidgetitem_text_get", reinterpret_cast<void*>(qt_tablewidgetitem_text_get));
 	mono_add_internal_call ("Qt.TableWidgetItem::qt_tablewidgetitem_text_set", reinterpret_cast<void*>(qt_tablewidgetitem_text_set));
+	
 
 	mono_add_internal_call ("Qt.AbstractItemView::qt_itemview_model_get", reinterpret_cast<void*>(qt_itemview_model_get));
 	mono_add_internal_call ("Qt.AbstractItemView::qt_itemview_model_set", reinterpret_cast<void*>(qt_itemview_model_set));
