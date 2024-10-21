@@ -1,4 +1,5 @@
-﻿#include "QGlueTableWidget.h"
+
+#include "QGlueTableWidget.h"
 
 GlueTableWidget::GlueTableWidget(MonoObject* thisObject, QWidget *parent) : QTableWidget(parent)
 {
@@ -27,3 +28,5 @@ void GlueTableWidget::selectionChanged()
 		mono_runtime_invoke(eventMethod, mono_gchandle_get_target(_thisObject), args, NULL);
 	}
 }
+
+#include "QGlueTableWidget.h.moc"
