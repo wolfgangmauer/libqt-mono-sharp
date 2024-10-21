@@ -4,6 +4,7 @@ GlueTableWidget::GlueTableWidget(MonoObject* thisObject, QWidget *parent) : QTab
 {
 	_thisObject = mono_gchandle_new(thisObject, TRUE);
 	_nameSpace = mono_class_get_namespace(mono_object_get_class (mono_gchandle_get_target(_thisObject)));
+	connect(this, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 }
 
 GlueTableWidget::~GlueTableWidget()
