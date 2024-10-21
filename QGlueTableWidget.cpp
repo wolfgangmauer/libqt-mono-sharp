@@ -15,4 +15,14 @@ GlueTableWidget::~GlueTableWidget()
 
 void GlueTableWidget::selectionChanged()
 {
+	auto klass = mono_object_get_class (mono_gchandle_get_target(_thisObject));
+	auto eventMethod = mono_class_get_method_from_name_recursive(klass, "OnSelectionChanged", 0);
+	if (eventMethod)
+	{
+		MonoImage* image = mono_class_get_image(mono_method_get_class(eventMethod));
+		void *args [1];
+		args[0] = NULL;
+		mono_thread_attach (mono_get_root_domain ());
+		mono_runtime_invoke(eventMethod, mono_gchandle_get_target(_thisObject), args, NULL);
+	}
 }
