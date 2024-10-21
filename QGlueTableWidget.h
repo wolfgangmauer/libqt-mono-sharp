@@ -4,6 +4,7 @@
 
 class GlueTableWidget : public QTableWidget
 {
+    Q_OBJECT
 #define BaseClass QTableWidget
 #include "internalevents.h"
 public:
