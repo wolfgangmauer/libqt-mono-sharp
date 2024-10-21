@@ -12,3 +12,7 @@ GlueTableWidget::~GlueTableWidget()
 	doOnRawDelete(_thisObject);
 	mono_gchandle_free (_thisObject); 
 }
+
+void GlueTableWidget::selectionChanged()
+{
+}
