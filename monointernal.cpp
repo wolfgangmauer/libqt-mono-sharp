@@ -1926,6 +1926,17 @@ void qt_tablewidget_row_col_set(GlueTableWidget* tableWidget, int row, int col, 
 	tableWidget->setItem(row, col, item);
 }
 
+QWidget* qt_tablewidget_row_col_get_widget(GlueTableWidget* tableWidget, int row, int col)
+{
+	return tableWidget->cellWidget(row, col);
+}
+
+void qt_tablewidget_row_col_set_widget(GlueTableWidget* tableWidget, int row, int col, QWidget* widget)
+{
+	tableWidget->setcellWidget(row, col, widget);
+}
+
+
 void qt_tablewidget_item_select(GlueTableWidget* tableWidget, QTableWidgetItem* item, bool select)
 {
 	tableWidget->setItemSelected(item, select);
@@ -2314,7 +2325,8 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_visual_item_rect", reinterpret_cast<void*>(qt_tablewidget_visual_item_rect));
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_clear", reinterpret_cast<void*>(qt_tablewidget_clear));
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_clear_contents", reinterpret_cast<void*>(qt_tablewidget_clear_contents));
-
+	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_row_col_get_widget", reinterpret_cast<void*>(qt_tablewidget_row_col_get_widget));
+	
 	mono_add_internal_call ("Qt.ListWidget::qt_listwidget_new", reinterpret_cast<void*>(qt_listwidget_new));
 	mono_add_internal_call ("Qt.ListWidget::qt_listwidget_item_add", reinterpret_cast<void*>(qt_listwidget_item_add));
 	mono_add_internal_call ("Qt.ListWidget::qt_listwidget_item_get", reinterpret_cast<void*>(qt_listwidget_item_get));
