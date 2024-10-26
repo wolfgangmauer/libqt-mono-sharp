@@ -1933,7 +1933,7 @@ QWidget* qt_tablewidget_row_col_get_widget(GlueTableWidget* tableWidget, int row
 
 void qt_tablewidget_row_col_set_widget(GlueTableWidget* tableWidget, int row, int col, QWidget* widget)
 {
-	tableWidget->setcellWidget(row, col, widget);
+	tableWidget->setCellWidget(row, col, widget);
 }
 
 
