@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include <QScrollbar>
+#include <QScrollBar>
 
-class GlueScrollbar : public QScrollbar
+class GlueScrollbar : public QScrollBar
 {
 public:
     GlueScrollbar(MonoObject* thisObject, QWidget *parent=0);
