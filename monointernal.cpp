@@ -253,6 +253,10 @@ void qt_scrollbar_delete(GlueScrollBar* widget)
 {
 	delete widget;
 }
+QSize* qt_scrollbar_sizehint_get(QScrollBar* widget)
+{
+	return new QSize(widget->sizeHint());
+}
 MonoString* qt_widget_windowtitle_get(QWidget* widget)
 {
 	return mono_string_new(mono_domain_get (), widget->windowTitle().toStdString().c_str());
