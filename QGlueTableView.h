@@ -10,7 +10,7 @@ class GlueTableView : public QTableView
 public:
     explicit GlueTableView(MonoObject* thisObject, QWidget *parent=0);
     ~GlueTableView();
-    int move_cursor(int cursorAction);
+    int move_cursor(int cursorAction, int modifier);
 protected:
 	void currentChanged(const QModelIndex &current, const QModelIndex &previous) override;
 private:
