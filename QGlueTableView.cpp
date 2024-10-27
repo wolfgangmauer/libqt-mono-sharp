@@ -13,9 +13,9 @@ GlueTableView::~GlueTableView()
 	doOnRawDelete(_thisObject);
 	mono_gchandle_free (_thisObject); 
 }
-int GlueTableView::move_cursor(int cursorAction)
+int GlueTableView::move_cursor(int cursorAction, int modifier)
 {
-	return moveCursor((QAbstractItemView::CursorAction)cursorAction, (Qt::KeyboardModifiers)0).row();
+	return moveCursor((QAbstractItemView::CursorAction)cursorAction, (Qt::KeyboardModifiers)modifier).row();
 }
 void GlueTableView::currentChanged(const QModelIndex &current, const QModelIndex &previous)
 {
