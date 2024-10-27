@@ -1821,6 +1821,11 @@ void qt_tableview_rowheight_set(GlueTableView* tableView, int row, int height)
 	tableView->setRowHeight(row, height);
 }
 
+QModelIndex qt_tableview_move_cursor(GlueTableView* tableView, CursorAction cursorAction)
+{
+	return tableView->moveCursor(cursorAction, Qt::KeyboardModifiers::NoModifier);
+}
+
 QTableWidgetItem* qt_tablewidgetitem_new(MonoString* text)
 {
 	QTableWidgetItem* retVal = NULL;
@@ -2365,6 +2370,7 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.TableView::qt_tableview_scrollto_index", reinterpret_cast<void*>(qt_tableview_scrollto_index));
 	mono_add_internal_call ("Qt.TableView::qt_tableview_rowheight_get", reinterpret_cast<void*>(qt_tableview_rowheight_get));
 	mono_add_internal_call ("Qt.TableView::qt_tableview_rowheight_set", reinterpret_cast<void*>(qt_tableview_rowheight_set));
+	mono_add_internal_call ("Qt.TableView::qt_tableview_move_cursor", reinterpret_cast<void*>(qt_tableview_move_cursor));
 
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_new", reinterpret_cast<void*>(qt_tablewidget_new));
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_rowcount_get", reinterpret_cast<void*>(qt_tablewidget_rowcount_get));
