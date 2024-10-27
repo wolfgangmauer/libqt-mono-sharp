@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <QScrollBar>
+#include "QGlueWidget.h"
 
 class GlueScrollBar : public QScrollBar
 {
