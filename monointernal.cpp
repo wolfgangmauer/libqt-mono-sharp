@@ -2264,43 +2264,43 @@ void qt_action_text_set(GlueAction* action, MonoString* text)
 	action->setText(p);
 	g_free(p);
 }
-int qt_abstractslider_minimum_get(GlueAbstractSlider* abstractSlider)
+int qt_abstractslider_minimum_get(QAbstractSlider* abstractSlider)
 {
 	return abstractSlider->minimum();
 }
-void qt_abstractslider_minimum_set(GlueAbstractSlider* abstractSlider, int minimum)
+void qt_abstractslider_minimum_set(QAbstractSlider* abstractSlider, int minimum)
 {
 	abstractSlider->setMinimum(minimum);
 }
-int qt_abstractslider_maximum_get(GlueAbstractSlider* abstractSlider)
+int qt_abstractslider_maximum_get(QAbstractSlider* abstractSlider)
 {
 	return abstractSlider->maximum();
 }
-void qt_abstractslider_maximum_set(GlueAbstractSlider* abstractSlider, int maximum)
+void qt_abstractslider_maximum_set(QAbstractSlider* abstractSlider, int maximum)
 {
 	abstractSlider->setMaximum(maximum);
 }
-int qt_abstractslider_singlestep_get(GlueAbstractSlider* abstractSlider)
+int qt_abstractslider_singlestep_get(QAbstractSlider* abstractSlider)
 {
 	return abstractSlider->singleStep();
 }
-void qt_abstractslider_singlestep_set(GlueAbstractSlider* abstractSlider, int singestep)
+void qt_abstractslider_singlestep_set(QAbstractSlider* abstractSlider, int singestep)
 {
 	abstractSlider->setSingleStep(singestep);
 }
-int qt_abstractslider_pagestep_get(GlueAbstractSlider* abstractSlider)
+int qt_abstractslider_pagestep_get(QAbstractSlider* abstractSlider)
 {
 	return abstractSlider->pageStep();
 }
-void qt_abstractslider_pagestep_set(GlueAbstractSlider* abstractSlider, int pagestep)
+void qt_abstractslider_pagestep_set(QAbstractSlider* abstractSlider, int pagestep)
 {
 	abstractSlider->setPageStep(pagestep);
 }
-int qt_abstractslider_value_get(GlueAbstractSlider* abstractSlider)
+int qt_abstractslider_value_get(QAbstractSlider* abstractSlider)
 {
 	return abstractSlider->value();
 }
-void qt_abstractslider_value_set(GlueAbstractSlider* abstractSlider, int value)
+void qt_abstractslider_value_set(QAbstractSlider* abstractSlider, int value)
 {
 	abstractSlider->setValue(value);
 }
