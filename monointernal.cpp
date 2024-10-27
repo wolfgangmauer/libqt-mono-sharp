@@ -1821,9 +1821,9 @@ void qt_tableview_rowheight_set(GlueTableView* tableView, int row, int height)
 	tableView->setRowHeight(row, height);
 }
 
-QModelIndex* qt_tableview_move_cursor(GlueTableView* tableView, CursorAction cursorAction)
+QModelIndex* qt_tableview_move_cursor(GlueTableView* tableView, QAbstractItemView::CursorAction cursorAction)
 {
-	return &tableView->moveCursor(cursorAction, (Qt::KeyboardModifiers)0);
+	return tableView->move_cursor(cursorAction);
 }
 
 QTableWidgetItem* qt_tablewidgetitem_new(MonoString* text)
