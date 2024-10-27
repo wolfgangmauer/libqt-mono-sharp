@@ -21,6 +21,7 @@
 #include "QGlueAction.h"
 #include "QGlueMenu.h"
 #include "QGlueMenuBar.h"
+#include "QGlueScrollBar.h"
 #include "QGlueToolBar.h"
 #include "QGlueCheckBox.h"
 #include "QGluePushButton.h"
@@ -32,7 +33,7 @@
 #include <QPainter>
 #include <QHeaderView>
 #include <QDesktopWidget>
-
+#include <QScrollBar>
 #include <QtPlatformHeaders/qeglfsfunctions.h>
 #include <qstylefactory.h>
 
@@ -244,7 +245,14 @@ QSize* qt_svgwidget_sizehint_get(QSvgWidget* widget)
 {
 	return new QSize(widget->sizeHint());
 }
-
+GlueScrollBar* qt_scrollbar_new(MonoObject* obj, QWidget* parent)
+{
+	return new GlueScrollBar(obj, parent);
+}
+void qt_scrollbar_delete(GlueScrollBar* widget)
+{
+	delete widget;
+}
 MonoString* qt_widget_windowtitle_get(QWidget* widget)
 {
 	return mono_string_new(mono_domain_get (), widget->windowTitle().toStdString().c_str());
@@ -2256,6 +2264,46 @@ void qt_action_text_set(GlueAction* action, MonoString* text)
 	action->setText(p);
 	g_free(p);
 }
+int qt_abstractslider_minimum_get(GlueAbstractSlider* abstractSlider)
+{
+	return abstractSlider->minimum();
+}
+void qt_abstractslider_minimum_set(GlueAbstractSlider* abstractSlider, int minimum)
+{
+	abstractSlider->setMinimum(minimum);
+}
+int qt_abstractslider_maximum_get(GlueAbstractSlider* abstractSlider)
+{
+	return abstractSlider->maximum();
+}
+void qt_abstractslider_maximum_set(GlueAbstractSlider* abstractSlider, int maximum)
+{
+	abstractSlider->setMaximum(maximum);
+}
+int qt_abstractslider_singlestep_get(GlueAbstractSlider* abstractSlider)
+{
+	return abstractSlider->singleStep();
+}
+void qt_abstractslider_singlestep_set(GlueAbstractSlider* abstractSlider, int singestep)
+{
+	abstractSlider->setSingleStep(singestep);
+}
+int qt_abstractslider_pagestep_get(GlueAbstractSlider* abstractSlider)
+{
+	return abstractSlider->pageStep();
+}
+void qt_abstractslider_pagestep_set(GlueAbstractSlider* abstractSlider, int pagestep)
+{
+	abstractSlider->setPageStep(pagestep);
+}
+int qt_abstractslider_value_get(GlueAbstractSlider* abstractSlider)
+{
+	return abstractSlider->value();
+}
+void qt_abstractslider_value_set(GlueAbstractSlider* abstractSlider, int value)
+{
+	abstractSlider->setValue(value);
+}
 
 extern "C" void qt_application_monointernal_init()
 {
@@ -2734,6 +2782,22 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call("Qt.SvgWidget::qt_svgwidget_delete", reinterpret_cast<void*>(qt_svgwidget_delete));
 	mono_add_internal_call("Qt.SvgWidget::qt_svgwidget_load", reinterpret_cast<void*>(qt_svgwidget_load));
 	mono_add_internal_call("Qt.SvgWidget::qt_svgwidget_sizehint_get", reinterpret_cast<void*>(qt_svgwidget_sizehint_get));
+
+	mono_add_internal_call("Qt.ScrollBar::qt_scrollbar_new", reinterpret_cast<void*>(qt_scrollbar_new));
+	mono_add_internal_call("Qt.ScrollBar::qt_scrollbar_delete", reinterpret_cast<void*>(qt_scrollbar_delete));
+	mono_add_internal_call("Qt.ScrollBar::qt_scrollbar_sizehint_get", reinterpret_cast<void*>(qt_scrollbar_sizehint_get));
+
+	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_minimum_get", reinterpret_cast<void*>(qt_abstractslider_minimum_get));
+	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_minimum_set", reinterpret_cast<void*>(qt_abstractslider_minimum_set));
+	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_maximum_get", reinterpret_cast<void*>(qt_abstractslider_maximum_get));
+	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_maximum_set", reinterpret_cast<void*>(qt_abstractslider_maximum_set));
+	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_singlestep_get", reinterpret_cast<void*>(qt_abstractslider_singlestep_get));
+	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_singlestep_set", reinterpret_cast<void*>(qt_abstractslider_singlestep_set));
+	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_pagestep_get", reinterpret_cast<void*>(qt_abstractslider_pagestep_get));
+	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_pagestep_set", reinterpret_cast<void*>(qt_abstractslider_pagestep_set));
+	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_value_get", reinterpret_cast<void*>(qt_abstractslider_value_get));
+	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_value_set", reinterpret_cast<void*>(qt_abstractslider_value_set));
+
 }
 
 #ifdef __cplusplus
