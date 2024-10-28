@@ -13,5 +13,5 @@ void GlueTableWidgetItem::set_text(MonoString* text)
 {
 	char* p = mono_string_to_utf8(text);
 	emit setText(p);
-	gfree(p);
+	g_free(p);
 }
