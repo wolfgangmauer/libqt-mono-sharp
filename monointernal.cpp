@@ -1843,9 +1843,7 @@ MonoString* qt_tablewidgetitem_text_get(GlueTableWidgetItem* item)
 
 void qt_tablewidgetitem_text_set(GlueTableWidgetItem* item, MonoString* text)
 {
-	char* p = mono_string_to_utf8(text);
-	item->setText(p);
-	g_free(p);
+	item->set_text(text);
 }
 
 QStandardItem* qt_standarditem_new(MonoObject* thisObject, MonoString* text)
