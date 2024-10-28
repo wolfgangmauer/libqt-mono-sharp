@@ -1936,13 +1936,13 @@ GlueTableWidgetItem* qt_tablewidget_row_col_item_get(GlueTableWidget* tableWidge
 {
 	GlueTableWidgetItem* retVal = NULL;
 	retVal = (GlueTableWidgetItem*)tableWidget->item(row, col);
-	print("get item(%d, %d) %p\n", row, col, retVal);
+	printf("get item(%d, %d) %p\n", row, col, retVal);
 	return retVal;
 }
 
 void qt_tablewidget_row_col_item_set(GlueTableWidget* tableWidget, int row, int col, GlueTableWidgetItem* item)
 {
-	print("set item(%d, %d) %p\n", row, col, item);
+	printf("set item(%d, %d) %p\n", row, col, item);
 	tableWidget->setItem(row, col, item);
 }
 
