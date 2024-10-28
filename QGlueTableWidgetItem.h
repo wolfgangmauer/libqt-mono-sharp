@@ -2,7 +2,7 @@
 #include <QTableWidgetItem>
 #include "QGlueWidget.h"
 
-class GlueStandardItem : public QTableWidgetItem
+class GlueTableWidgetItem : public QTableWidgetItem
 {
 public:
     GlueTableWidgetItem(MonoObject* thisObject, char* text);
