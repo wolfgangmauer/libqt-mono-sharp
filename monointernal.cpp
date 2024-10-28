@@ -15,6 +15,7 @@
 #include "QGlueModelIndex.h"
 #include "QGlueTableView.h"
 #include "QGlueTableWidget.h"
+#include "QGlueTableWidgetItem.h"
 #include "QGlueSvgWidget.h"
 #include "QGlueListView.h"
 #include "QGlueListWidget.h"
@@ -1826,21 +1827,21 @@ int qt_tableview_move_cursor(GlueTableView* tableView, int cursorAction, int mod
 	return tableView->move_cursor(cursorAction, modifier);
 }
 
-QTableWidgetItem* qt_tablewidgetitem_new(MonoString* text)
+QGlueTableWidgetItem* qt_tablewidgetitem_new(MonoObject* thisObject, MonoString* text)
 {
-	QTableWidgetItem* retVal = NULL;
+	QGlueTableWidgetItem* retVal = NULL;
 	char* p = mono_string_to_utf8(text);
-	retVal = new QTableWidgetItem(p);
+	retVal = new QGlueTableWidgetItem(thisObject, p);
 	g_free(p);
 	return retVal;
 }
 
-MonoString* qt_tablewidgetitem_text_get(QTableWidgetItem* item)
+MonoString* qt_tablewidgetitem_text_get(QGlueTableWidgetItem* item)
 {
 	return mono_string_new(mono_domain_get (), item->text().toStdString().c_str());
 }
 
-void qt_tablewidgetitem_text_set(QTableWidgetItem* item, MonoString* text)
+void qt_tablewidgetitem_text_set(QGlueTableWidgetItem* item, MonoString* text)
 {
 	char* p = mono_string_to_utf8(text);
 	item->setText(p);
