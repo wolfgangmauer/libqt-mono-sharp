@@ -1934,12 +1934,12 @@ void qt_tablewidget_colcount_set(GlueTableWidget* tableWidget, int cols)
 	return tableWidget->setColumnCount(cols);
 }
 
-QTableWidgetItem* qt_tablewidget_row_col_get(GlueTableWidget* tableWidget, int row, int col)
+GlueTableWidgetItem* qt_tablewidget_row_col_item_get(GlueTableWidget* tableWidget, int row, int col)
 {
-	return tableWidget->item(row, col);
+	return (GlueTableWidgetItem*)tableWidget->item(row, col);
 }
 
-void qt_tablewidget_row_col_set(GlueTableWidget* tableWidget, int row, int col, QTableWidgetItem* item)
+void qt_tablewidget_row_col_item_set(GlueTableWidget* tableWidget, int row, int col, GlueTableWidgetItem* item)
 {
 	tableWidget->setItem(row, col, item);
 }
@@ -2378,8 +2378,8 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_rowcount_set", reinterpret_cast<void*>(qt_tablewidget_rowcount_set));
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_colcount_get", reinterpret_cast<void*>(qt_tablewidget_colcount_get));
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_colcount_set", reinterpret_cast<void*>(qt_tablewidget_colcount_set));
-	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_row_col_get", reinterpret_cast<void*>(qt_tablewidget_row_col_get));
-	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_row_col_set", reinterpret_cast<void*>(qt_tablewidget_row_col_set));
+	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_row_col_item_get", reinterpret_cast<void*>(qt_tablewidget_row_col_item_get));
+	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_row_col_item_set", reinterpret_cast<void*>(qt_tablewidget_row_col_item_set));
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_item_select", reinterpret_cast<void*>(qt_tablewidget_item_select));
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_visual_item_rect", reinterpret_cast<void*>(qt_tablewidget_visual_item_rect));
 	mono_add_internal_call ("Qt.TableWidget::qt_tablewidget_clear", reinterpret_cast<void*>(qt_tablewidget_clear));
