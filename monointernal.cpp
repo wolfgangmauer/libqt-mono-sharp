@@ -15,7 +15,6 @@
 #include "QGlueModelIndex.h"
 #include "QGlueTableView.h"
 #include "QGlueTableWidget.h"
-#include "QGlueTableWidgetItem.h"
 #include "QGlueSvgWidget.h"
 #include "QGlueListView.h"
 #include "QGlueListWidget.h"
@@ -1827,23 +1826,25 @@ int qt_tableview_move_cursor(GlueTableView* tableView, int cursorAction, int mod
 	return tableView->move_cursor(cursorAction, modifier);
 }
 
-GlueTableWidgetItem* qt_tablewidgetitem_new(MonoObject* thisObject, MonoString* text)
+QTableWidgetItem* qt_tablewidgetitem_new(MonoString* text)
 {
-	GlueTableWidgetItem* retVal = NULL;
+	QTableWidgetItem* retVal = NULL;
 	char* p = mono_string_to_utf8(text);
-	retVal = new GlueTableWidgetItem(thisObject, p);
+	retVal = new QTableWidgetItem(p);
 	g_free(p);
 	return retVal;
 }
 
-MonoString* qt_tablewidgetitem_text_get(GlueTableWidgetItem* item)
+MonoString* qt_tablewidgetitem_text_get(QTableWidgetItem* item)
 {
 	return mono_string_new(mono_domain_get (), item->text().toStdString().c_str());
 }
 
-void qt_tablewidgetitem_text_set(GlueTableWidgetItem* item, MonoString* text)
+void qt_tablewidgetitem_text_set(QTableWidgetItem* item, MonoString* text)
 {
-	item->set_text(text);
+	char* p = mono_string_to_utf8(text);
+	item->setText(p);
+	g_free(p);
 }
 
 QStandardItem* qt_standarditem_new(MonoObject* thisObject, MonoString* text)
@@ -1932,17 +1933,13 @@ void qt_tablewidget_colcount_set(GlueTableWidget* tableWidget, int cols)
 	return tableWidget->setColumnCount(cols);
 }
 
-GlueTableWidgetItem* qt_tablewidget_row_col_item_get(GlueTableWidget* tableWidget, int row, int col)
+QTableWidgetItem* qt_tablewidget_row_col_item_get(GlueTableWidget* tableWidget, int row, int col)
 {
-	GlueTableWidgetItem* retVal = NULL;
-	retVal = (GlueTableWidgetItem*)tableWidget->item(row, col);
-	printf("get item(%d, %d) %p\n", row, col, retVal);
-	return retVal;
+	return tableWidget->item(row, col);
 }
 
-void qt_tablewidget_row_col_item_set(GlueTableWidget* tableWidget, int row, int col, GlueTableWidgetItem* item)
+void qt_tablewidget_row_col_item_set(GlueTableWidget* tableWidget, int row, int col, QTableWidgetItem* item)
 {
-	printf("set item(%d, %d) %p\n", row, col, item);
 	tableWidget->setItem(row, col, item);
 }
 
