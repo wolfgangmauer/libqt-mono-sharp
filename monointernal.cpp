@@ -1827,21 +1827,21 @@ int qt_tableview_move_cursor(GlueTableView* tableView, int cursorAction, int mod
 	return tableView->move_cursor(cursorAction, modifier);
 }
 
-QGlueTableWidgetItem* qt_tablewidgetitem_new(MonoObject* thisObject, MonoString* text)
+GlueTableWidgetItem* qt_tablewidgetitem_new(MonoObject* thisObject, MonoString* text)
 {
-	QGlueTableWidgetItem* retVal = NULL;
+	GlueTableWidgetItem* retVal = NULL;
 	char* p = mono_string_to_utf8(text);
-	retVal = new QGlueTableWidgetItem(thisObject, p);
+	retVal = new GlueTableWidgetItem(thisObject, p);
 	g_free(p);
 	return retVal;
 }
 
-MonoString* qt_tablewidgetitem_text_get(QGlueTableWidgetItem* item)
+MonoString* qt_tablewidgetitem_text_get(GlueTableWidgetItem* item)
 {
 	return mono_string_new(mono_domain_get (), item->text().toStdString().c_str());
 }
 
-void qt_tablewidgetitem_text_set(QGlueTableWidgetItem* item, MonoString* text)
+void qt_tablewidgetitem_text_set(GlueTableWidgetItem* item, MonoString* text)
 {
 	char* p = mono_string_to_utf8(text);
 	item->setText(p);
