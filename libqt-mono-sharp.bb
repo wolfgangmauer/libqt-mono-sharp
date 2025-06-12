@@ -8,9 +8,6 @@ SRC_URI[sha256sum] = "c3573b6d25ea729252e825264fef45ee0375c540f0cd97075979367ed7
 
 PV = "1.0"
 
-PROVIDES =+ " libqt-mono-sharp"
-PACKAGES =+ " libqt-mono-sharp"
-
 inherit pkgconfig
 #inherit gitpkgv
 
@@ -18,13 +15,14 @@ SRCREV = "${AUTOREV}"
 PV = "0.0.1+git"
 PKGV = "0.0.1+git${GITPKGV}"
 
-DEPENDS = "qtbase qttools qtsvg mono"
+DEPENDS = "qtbase qttools qtsvg mono qttools-native"
 
 SRC_URI = "git://github.com/wolfgangmauer/libqt-mono-sharp.git;protocol=http;branch=main"
 
 S = "${WORKDIR}/git"
 
 do_compile() {
+    for i in *.h; do moc $i -o $i.moc; done
     ${CC} -fPIC -shared -Wl,-soname,libqt-mono-sharp.so.0 -o libqt-mono-sharp.so.0.0.0 `pkg-config --cflags --libs Qt5Core Qt5Gui Qt5Widgets Qt5UiTools Qt5Svg mono-2 glib-2.0` monointernal.cpp QGlueAction.cpp QGlueApplication.cpp QGlueBoxLayout.cpp QGlueHBoxLayout.cpp QGlueListView.cpp QGlueListWidget.cpp QGlueMainWindow.cpp QGlueMenu.cpp QGlueMenuBar.cpp QGlueModelIndex.cpp QGlueObject.cpp QGlueProgressBar.cpp QGluePushButton.cpp QGlueScrollArea.cpp QGlueSizePolicy.cpp QGlueStandardItemModel.cpp QGlueSvgWidget.cpp QGlueTableView.cpp QGlueTableWidget.cpp QGlueToolBar.cpp QGlueToolButton.cpp QGlueVBoxLayout.cpp QGlueWidget.cpp
 }
 
