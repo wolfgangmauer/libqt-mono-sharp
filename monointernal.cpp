@@ -645,7 +645,10 @@ void qt_dialog_reject(GlueDialog* dialog)
 {
 	dialog->reject();
 }
-
+void qt_dialog_close(GlueDialog* dialog)
+{
+	dialog->close();
+}
 bool qt_dialog_modal_get(GlueDialog* dialog)
 {
 	return dialog->isModal();
@@ -2360,6 +2363,7 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call ("Qt.Dialog::qt_dialog_exec", reinterpret_cast<void*>(qt_dialog_exec));
 	mono_add_internal_call ("Qt.Dialog::qt_dialog_accept", reinterpret_cast<void*>(qt_dialog_accept));
 	mono_add_internal_call ("Qt.Dialog::qt_dialog_reject", reinterpret_cast<void*>(qt_dialog_reject));
+	mono_add_internal_call ("Qt.Dialog::qt_dialog_close", reinterpret_cast<void*>(qt_dialog_close));
 
 	mono_add_internal_call ("Qt.TableView::qt_tableview_new", reinterpret_cast<void*>(qt_tableview_new));
 	mono_add_internal_call ("Qt.TableView::qt_tableview_horizontalheader_get", reinterpret_cast<void*>(qt_widget_horizontalheader_get));
