@@ -14,6 +14,9 @@
 #include "QGlueFrame.h"
 #include "QGlueBoxLayout.h"
 
+_GMainContext *GlueApplication::gContext = nullptr;
+bool GlueApplication::hasGlib = true;
+
 GlueApplication::GlueApplication(MonoObject* thisObject, int &argc, char**argv) : QApplication(argc, argv)
 {
 	_thisObject = mono_gchandle_new(thisObject, TRUE);
