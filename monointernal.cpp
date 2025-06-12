@@ -60,7 +60,15 @@ int qt_application_exec(GlueApplication* application)
 {
 	return application->exec();
 }
-
+MonoString* qt_coreapplication_name_get()
+{
+	return mono_string_new(QCoreApplication::applicationName());
+}
+void qt_coreapplication_name_set(MonoString* name)
+{
+	char* p = mono_string_to_utf8(name);
+	QCoreApplication::setApplicationName(p);
+}
 void qt_coreapplication_quit()
 {
 	QCoreApplication::quit();
