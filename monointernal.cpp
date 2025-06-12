@@ -2337,6 +2337,8 @@ extern "C" void qt_application_monointernal_init()
 
 	mono_add_internal_call ("Qt.CoreApplication::qt_application_attribute_set", reinterpret_cast<void*>(qt_application_attribute_set));
 	mono_add_internal_call ("Qt.CoreApplication::qt_coreapplication_quit", reinterpret_cast<void*>(qt_coreapplication_quit));
+	mono_add_internal_call ("Qt.CoreApplication::qt_coreapplication_name_get", reinterpret_cast<void*>(qt_coreapplication_name_get));
+	mono_add_internal_call ("Qt.CoreApplication::qt_coreapplication_name_set", reinterpret_cast<void*>(qt_coreapplication_name_set));
 
 	mono_add_internal_call ("Qt.StyleFactory::qt_stylefactory_create", reinterpret_cast<void*>(qt_stylefactory_create));
 	mono_add_internal_call ("Qt.StyleFactory::qt_stylefactory_keys", reinterpret_cast<void*>(qt_stylefactory_keys));
