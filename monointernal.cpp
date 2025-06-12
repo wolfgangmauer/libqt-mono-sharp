@@ -62,7 +62,7 @@ int qt_application_exec(GlueApplication* application)
 }
 MonoString* qt_coreapplication_name_get()
 {
-	return mono_string_new(QCoreApplication::applicationName());
+	return mono_string_new(QCoreApplication::applicationName().c_str());
 }
 void qt_coreapplication_name_set(MonoString* name)
 {
