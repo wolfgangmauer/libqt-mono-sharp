@@ -19,6 +19,11 @@ GlueApplication::GlueApplication(MonoObject* thisObject, int &argc, char**argv) 
 	_thisObject = mono_gchandle_new(thisObject, TRUE);
 }
 
+void GlueApplication::setGLibEventDispatcher()
+{
+	QApplication::setEventDispatcher(new QEventDispatcherGlib);
+}
+
 GlueApplication::~GlueApplication()
 {
 	doOnRawDelete(_thisObject);
