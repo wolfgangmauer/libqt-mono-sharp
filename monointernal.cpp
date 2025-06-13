@@ -2325,7 +2325,7 @@ void qt_abstractslider_value_set(QAbstractSlider* abstractSlider, int value)
 {
 	abstractSlider->setValue(value);
 }
-
+class QEventDispatcherGlib;
 QEventDispatcherGlib dispatcher;
 extern "C" void qt_application_monointernal_init()
 {
