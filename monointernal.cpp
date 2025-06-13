@@ -2329,7 +2329,6 @@ void qt_abstractslider_value_set(QAbstractSlider* abstractSlider, int value)
 
 extern "C" void qt_application_monointernal_init()
 {
-    	QApplication::setEventDispatcher(new QEventDispatcherGlib);
 	mono_add_internal_call ("Qt.Application::qt_application_new", reinterpret_cast<void*>(qt_application_new));
 	mono_add_internal_call ("Qt.Application::qt_application_exec", reinterpret_cast<void*>(qt_application_exec));
 	mono_add_internal_call ("Qt.Application::qt_application_postevent", reinterpret_cast<void*>(qt_application_postevent));
