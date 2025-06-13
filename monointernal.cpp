@@ -52,6 +52,7 @@ GlueApplication* qt_application_new(MonoObject* thisObject, MonoArray* argv)
 	_argv = new char*[argc];
 	for (int i = 0; i < argc; i++)
 		_argv[i] = mono_string_to_utf8(mono_array_get (argv, MonoString*, i));
+	GlueApplication::setGLibEventDispatcher();
 	retVal = new GlueApplication(thisObject, argc, _argv);
 	return retVal;
 }
@@ -2326,8 +2327,6 @@ void qt_abstractslider_value_set(QAbstractSlider* abstractSlider, int value)
 	abstractSlider->setValue(value);
 }
 
-#include <private/qeventdispatcher_glib_p.h>
-
 extern "C" void qt_application_monointernal_init()
 {
     	QApplication::setEventDispatcher(new QEventDispatcherGlib);
@@ -2825,9 +2824,7 @@ extern "C" void qt_application_monointernal_init()
 	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_pagestep_set", reinterpret_cast<void*>(qt_abstractslider_pagestep_set));
 	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_value_get", reinterpret_cast<void*>(qt_abstractslider_value_get));
 	mono_add_internal_call("Qt.AbstractSlider::qt_abstractslider_value_set", reinterpret_cast<void*>(qt_abstractslider_value_set));
-
 }
-
 #ifdef __cplusplus
 }
 #endif
