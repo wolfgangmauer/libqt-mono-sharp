@@ -12,6 +12,7 @@
 class GlueApplication : public QApplication
 {
 public:
+	static void setGLibEventDispatcher();
 	GlueApplication(MonoObject*, int&, char**);
 	~GlueApplication();
 private:
