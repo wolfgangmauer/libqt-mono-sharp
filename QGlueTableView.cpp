@@ -23,7 +23,7 @@ void GlueTableView::currentChanged(const QModelIndex &current, const QModelIndex
 	auto eventMethod = mono_class_get_method_from_name_recursive(klass, "OnCurrentRowChanged", 2);
 	if (eventMethod)
 	{
-		MonoImage* image = mono_class_get_image(mono_method_get_class(eventMethod));
+		//MonoImage* image = mono_class_get_image(mono_method_get_class(eventMethod));
 		int currentRow = current.row();
 		int previousRow = previous.row();
 		void *args [2];
