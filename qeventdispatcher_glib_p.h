@@ -16,7 +16,7 @@
 //
 
 #include "qabstracteventdispatcher.h"
-#include "qabstracteventdispatcher_p.h"
+#include "private/qabstracteventdispatcher_p.h"
 
 typedef struct _GMainContext GMainContext;
 
